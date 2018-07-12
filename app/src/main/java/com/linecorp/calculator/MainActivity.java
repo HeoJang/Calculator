@@ -10,8 +10,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    /*
     double FirstNumber;
     double SecondNumber;
+    */
     double ResultNumber;
     EditText in1;               // 꼭 여기에 정의 안하고 바로 EditText in1 = (EditText) findView... 하면 안되나
     EditText in2;               // 그렇게하면 OnClick 함수에서는 인식이 안되나!
@@ -26,32 +28,32 @@ public class MainActivity extends AppCompatActivity {
         in2 = (EditText) findViewById(R.id.editText2);
         out = (TextView) findViewById(R.id.textView2);
 
-        findViewById(R.id.button1).setOnClickListener(mClickListener);      // ClickListener 사용에 익숙해지자
-        findViewById(R.id.button2).setOnClickListener(mClickListener);
-        findViewById(R.id.button3).setOnClickListener(mClickListener);
-        findViewById(R.id.button4).setOnClickListener(mClickListener);
+        findViewById(R.id.plus).setOnClickListener(mClickListener);      // ClickListener 사용에 익숙해지자
+        findViewById(R.id.minus).setOnClickListener(mClickListener);
+        findViewById(R.id.multi).setOnClickListener(mClickListener);
+        findViewById(R.id.div).setOnClickListener(mClickListener);
 
     }
 
         Button.OnClickListener mClickListener = new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirstNumber = Double.parseDouble(in1.getText().toString());
-                SecondNumber = Double.parseDouble(in2.getText().toString());
+                Double FirstNumber = (Double) Double.parseDouble(in1.getText().toString());
+                Double SecondNumber = (Double) Double.parseDouble(in2.getText().toString());
 
                 switch(view.getId()) {
-                    case R.id.button1:
+                    case R.id.plus:
                         ResultNumber = FirstNumber + SecondNumber;
                         break;
 
-                    case R.id.button2:
+                    case R.id.minus:
                         ResultNumber = FirstNumber - SecondNumber;
                         break;
 
-                    case R.id.button3:
+                    case R.id.multi:
                         ResultNumber = FirstNumber * SecondNumber;
 
-                    case R.id.button4:
+                    case R.id.div:
                         ResultNumber = FirstNumber / SecondNumber;
 
                     default :
