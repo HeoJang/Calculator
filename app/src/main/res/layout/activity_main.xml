@@ -5,10 +5,11 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/input1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="#26f1d6"
         android:ems="10"
         android:hint="입력해"
         android:inputType="number"
@@ -16,10 +17,11 @@
         android:textSize="30dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/input2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@android:color/holo_purple"
         android:ems="10"
         android:hint="또 입력해"
         android:inputType="number"
@@ -66,7 +68,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/equaltextView"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_weight="0.5"
@@ -75,10 +77,11 @@
         android:textSize="60dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
+        android:background="@color/colorAccent"
         android:text="그럼 결과가 나올거야"
         android:textAlignment="center"
         android:textSize="30dp" />
