@@ -7,18 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.math.*;         // double형의 곱셈과 나눗셈을 위한 import
 
 public class MainActivity extends AppCompatActivity {
 
-    /*
-    double FirstNumber;
-    double SecondNumber;
-    double ResultNumber;
-    */
-    private EditText in1;               // 꼭 여기에 정의 안하고 바로 EditText in1 = (EditText) findView... 하면 안되나
-    private EditText in2;               // 그렇게하면 OnClick 함수에서는 인식이 안되나!
+    private EditText in1;
+    private EditText in2;
     private TextView out;               // 객체지향언어이므로, 접근범위를 설정해주어야 안전하다.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,36 +31,43 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        Button.OnClickListener mClickListener = new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Float FirstNumber = (Float) Float.parseFloat(in1.getText().toString());
-                Float SecondNumber = (Float) Float.parseFloat(in2.getText().toString());
-                Float ResultNumber;
+    Button.OnClickListener mClickListener = new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Double FirstNumber = (Double) Double.parseDouble(in1.getText().toString());
+            Double SecondNumber = (Double) Double.parseDouble(in2.getText().toString());
+            Double ResultNumber;
 
-                switch(view.getId()) {
-                    case R.id.plus:
-                        ResultNumber = FirstNumber + SecondNumber;
-                        out.setText(Float.toString(ResultNumber));
+            switch(view.getId()) {
+                case R.id.plus:
+                    ResultNumber = FirstNumber + SecondNumber;
+                    out.setText(String.valueOf(ResultNumber));
+                    break;
+
+                case R.id.minus:
+                    ResultNumber = FirstNumber - SecondNumber;
+                    out.setText(String.valueOf(ResultNumber));
+                    break;
+
+                case R.id.multi:
+                    ResultNumber = FirstNumber * SecondNumber;
+                    out.setText(String.valueOf(ResultNumber));
+                    break;
+
+                case R.id.div:
+                    if(SecondNumber == 0) {
+                        Toast.makeText(getApplicationContext(), "0으로 나눌 수 없습니다", Toast.LENGTH_LONG).show();
                         break;
-
-                    case R.id.minus:
-                        ResultNumber = FirstNumber - SecondNumber;
-                        out.setText(Float.toString(ResultNumber)); // toString(2) -> 2진수로 보이기
-                        break;
-
-                    case R.id.multi:                // Double 에서 BigDecimal로 바꿔도 곱하기와 나누기 오류...
-                        ResultNumber = FirstNumber * SecondNumber;
-                        out.setText(Float.toString(ResultNumber));
-
-                    case R.id.div:
+                    }
+                    else {
                         ResultNumber = FirstNumber / SecondNumber;
-                        out.setText(Float.toString(ResultNumber));
-                        /*out.setText(ResultNumber.toString(), 2, BigDecimal.ROUND_UP);*/ //오류났었다
-
-                    default :                                        // ResultNumber = null은 문법적으로 틀린가?
-                        Toast.makeText(getApplicationContext(), "잘못된 입력", Toast.LENGTH_LONG).show();
-                }
+                        out.setText(String.valueOf(ResultNumber));
+                        break;
+                    }
+                default :
+                    Toast.makeText(getApplicationContext(), "잘못된 입력", Toast.LENGTH_LONG).show();
             }
-        };
-    }
+        }
+    };
+}
+
