@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.clear:
                     ClearALL();
+                    break;
 
                 default :
                     Toast.makeText(getApplicationContext(), "잘못된 입력", Toast.LENGTH_LONG).show();
